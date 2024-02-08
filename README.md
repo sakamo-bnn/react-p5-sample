@@ -26,7 +26,7 @@ New-Item ./src/index.js -type file
 New-Item ./src/App.js -type file
 ```
 
-- mac
+- mac(動作未確認)
 ```
 # 静的なアセットを管理するフォルダを作成
 mkdir public
