@@ -256,3 +256,14 @@ root.render(
 ![alt text](./README_SRC/02_p5js動作結果.png)
 
 ビルドする際には変更前のコードで問題ない(Github pages上での動作による確認)
+
+# Github Pages へのデプロイ
+次のサイトを参考にした
+
+https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
+
+- ```package.json``` の編集: ```homepage```、```scripts``` フィールドの変更
+- デプロイコマンドの実行
+  ```
+  npm run deploy
+  ```
