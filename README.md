@@ -100,8 +100,8 @@ export default App;
 ```
 
 ## 動作確認
-コマンドを容易に利用できるように ```package.json``` を次のように編集する
-```script``` フィールドの値が変更されていることに注目されたい
+コマンドを容易に利用できるように ```package.json``` を次のように編集する。
+```script``` フィールドの値が変更されていることに注目されたい。
 ```
 {
   "name": "react-p5-sample",
@@ -125,12 +125,12 @@ export default App;
 }
 ```
 
-次のコマンドで React アプリの動作を確認できる
+次のコマンドで React アプリの動作を確認できる。
 ```
 npm start
 ```
 
-次の内容が出力される
+次の内容が出力される。
 ```
 Compiled successfully!
 
@@ -168,7 +168,7 @@ webpack compiled successfully
   ```
 
 # p5.jsの導入
-自由にスケッチを書く前に、p5.jsの基本的な動作が実行できるかの確認をしていく。
+自由にスケッチを書く前に、p5.jsの基本的な動作が実行できるのか確認をしていく。
 
 ## パッケージのインストール
 ```
@@ -176,7 +176,7 @@ npm install react-p5
 ```
 
 ## p5.jsのソースファイル
-p5.js のプログラムを記したソースファイルを ```src``` フォルダに作成する
+p5.js のプログラムを記したソースファイルを ```src``` フォルダに作成する。
 フォルダ名は任意のものでよい。
 ここでは ```SampleSketch.js``` とし、コンポーネント名を ```SampleSketch``` とする。
 コンポーネント名は任意で決められるが次の点に留意されたい。
@@ -210,7 +210,7 @@ export default function SampleSketch(props) {
 };
 ```
 
-```App.js``` の内容を次のように変更する
+```App.js``` の内容を次のように変更する。
 
 ```
 import SampleSketch from "./SampleSketch"
@@ -231,12 +231,12 @@ function App() {
 export default App;
 ```
 
-動作結果を示す
+動作結果を示す。
 キャンバスが2つ出ることに対しては未解決状態
 
 ![alt text](./README_SRC/01_p5js動作結果.png)
 
-レンダリングの設定を<INS>一時的に</INS>変更するしかない
+レンダリングの設定を<INS>一時的に</INS>変更するしかない。
 - 変更前
 ```jsx: index.js (ファイル末尾)
 root.render(
@@ -255,15 +255,14 @@ root.render(
 );
 ```
 
-変更後のコードでの動作結果を次に示す
+変更後のコードでの動作結果を次に示す。
 
 ![alt text](./README_SRC/02_p5js動作結果.png)
 
-ビルドする際には変更前のコードで問題ない(Github pages上での動作による確認)
+ビルドする際には変更前のコードで問題ない(Github pages上での動作による確認)。
 
 # Github Pages へのデプロイ
-次のサイトを参考にした
-
+次のサイトを参考にした。
 
 https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
 
@@ -290,12 +289,12 @@ https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
 ```
 
 ## デプロイ
-コマンドの実行: ```rm``` コマンドが実行できる環境を整えること(Git Bashなど)
+コマンドの実行: ```rm``` コマンドが実行できる環境を整えよ(Git Bashなど)
 ```
 npm run deploy
 ```
 
-次のログが出力される
+次のログが出力される。
 ```
 > react-p5-sample@1.0.0 git
 > git add . && git commit && git push origin main
@@ -320,7 +319,8 @@ VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれ
 # <変更内容が以下に続く>
 ```
 
-```<変更内容が以下に続く>``` 以降の行にある ```#``` を外して保存し、エディターを閉じる。これで変更の内容が Github 上へ反映される(このコマンドの他に ```commit``` や ```push``` の操作は不要)
+```<変更内容が以下に続く>``` 以降の行にある ```#``` を外して保存し、エディターを閉じる。
+これで変更の内容が Github 上へ反映される(このコマンドの他に ```commit``` や ```push``` の操作は不要)。
 
 # リポジトリの設定
 ## リポジトリの公開範囲
@@ -330,7 +330,7 @@ VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれ
 ## Github Pages の設定
 ```[Setting > Pages > GitHub Pages > Build and deployment > Branch]``` で、
 ```Branch``` を ```main```、
-```folder``` を ```docs``` に変更する
+```folder``` を ```docs``` にそれぞれ変更する。
 
 ![alt text](./README_SRC/03_GithubPagesの設定.png)
 
@@ -354,7 +354,7 @@ VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれ
 ## ファイルのインポートについて
 ```loadShader()``` 関数で shader オブジェクトを生成しようとするのに躓いたので記録を残す。
 結論から記すと、ファイルパスを単なる文字列や変数で管理するのではなく、```import``` 文を使うことで解決した。
-他の load系 の関数(```loadImage()```)も同様かは不明
+他の load系 の関数(```loadImage()```)も同様かは不明。
 
 - ダメだった例
 ```shader の動作失敗例:JSX
