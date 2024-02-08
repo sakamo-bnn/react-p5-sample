@@ -260,10 +260,30 @@ root.render(
 # Github Pages へのデプロイ
 次のサイトを参考にした
 
+
 https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
 
 ## ```package.json``` の編集
-```homepage```、```scripts``` フィールドの変更
+```homepage```、```scripts``` フィールドの値を変更する。
+特に ```scripts``` フィールドにある ```git``` キー の値が記事の内容と違うので注意せよ。
+(記事では ```main``` が ```master``` となっている)
+
+
+```
+  <省略>
+  "homepage": "https://github.com/sakamo-bnn/react-p5-sample/",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "rm": "rm -rf docs",
+    "mv": "mv build docs",
+    "git": "git add . && git commit && git push origin main",
+    "deploy": "npm run rm && npm run build && npm run mv && npm run git"
+  },
+  <省略>
+```
 
 ## デプロイ
 コマンドの実行: ```rm``` コマンドが実行できる環境を整えること(Git Bashなど)
@@ -274,7 +294,7 @@ npm run deploy
 次のログが出力される
 ```
 > react-p5-sample@1.0.0 git
-> git add . && git commit && git push origin master
+> git add . && git commit && git push origin main
 
 warning: in the working copy of 'docs/asset-manifest.json', LF will be replaced by CRLF the next time Git touches it
 warning: in the working copy of 'docs/static/js/main.98587e68.js', LF will be replaced by CRLF the next time Git touches it
