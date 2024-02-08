@@ -262,8 +262,37 @@ root.render(
 
 https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
 
-- ```package.json``` の編集: ```homepage```、```scripts``` フィールドの変更
-- デプロイコマンドの実行
-  ```
-  npm run deploy
-  ```
+## ```package.json``` の編集
+```homepage```、```scripts``` フィールドの変更
+
+## デプロイ
+コマンドの実行: ```rm``` コマンドが実行できる環境を整えること(Git Bashなど)
+```
+npm run deploy
+```
+
+次のログが出力される
+```
+> react-p5-sample@1.0.0 git
+> git add . && git commit && git push origin master
+
+warning: in the working copy of 'docs/asset-manifest.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/static/js/main.98587e68.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/static/js/main.98587e68.js.LICENSE.txt', LF will be replaced by CRLF the next time Git touches it
+hint: Waiting for your editor to close the file...
+```
+
+VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれる
+
+```COMMIT_EDITMSG: 
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+# <変更内容が以下に続く>
+```
+
+```<変更内容が以下に続く>``` 以降の行にある ```#``` を外して保存し、エディターを閉じる。
