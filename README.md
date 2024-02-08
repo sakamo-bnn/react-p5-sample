@@ -350,3 +350,74 @@ VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれ
 アプリケーションに変更を加えたときは、再度 ```npm run deploy``` コマンドを実行してデプロイの操作をすればよい。
 
 ![alt text](./README_SRC/07_変更の反映.png)
+
+## ファイルのインポートについて
+```loadShader()``` 関数で shader オブジェクトを生成しようとするのに躓いたので記録を残す。
+結論から記すと、ファイルパスを単なる文字列や変数で管理するのではなく、```import``` 文を使うことで解決した。
+他の load系 の関数(```loadImage()```)も同様かは不明
+
+- ダメだった例
+```shader の動作失敗例:JSX
+import React from "react";
+import Sketch from "react-p5";
+
+export default function SampleSketch(props) {
+  let theShader;
+
+  const preload = (p5) => {
+    theShader = p5.loadShader("./main.vert", "./main.frag");
+  }
+
+  const setup = (p5, canvasParentRef) => {
+    // メインキャンバスの作成
+    p5.resizeCanvas(400, 400, p5.WEBGL).parent(canvasParentRef);
+  };
+
+  const draw = (p5) => {
+    p5.shader(theShader);
+
+    p5.rect(0, 0, p5.width, p5.height);
+  };
+
+  return <Sketch
+    preload={preload}
+    setup={setup}
+    draw={draw}
+  />;
+};
+```
+
+- 成功した例
+```shader の動作成功例:JSX
+import React from "react";
+import Sketch from "react-p5";
+
+// シェーダファイルへのパス
+import VERT_FILE from "./main.vert"
+import FRAG_FILE from "./main.frag"
+
+export default function SampleSketch(props) {
+  let theShader;
+
+  const preload = (p5) => {
+    theShader = p5.loadShader(VERT_FILE, FRAG_FILE);
+  }
+
+  const setup = (p5, canvasParentRef) => {
+    // メインキャンバスの作成
+    p5.resizeCanvas(400, 400, p5.WEBGL).parent(canvasParentRef);
+  };
+
+  const draw = (p5) => {
+    p5.shader(theShader);
+
+    p5.rect(0, 0, p5.width, p5.height);
+  };
+
+  return <Sketch
+    preload={preload}
+    setup={setup}
+    draw={draw}
+  />;
+};
+```
