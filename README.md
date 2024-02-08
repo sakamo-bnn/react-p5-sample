@@ -323,10 +323,22 @@ VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれ
 1. Github のWebサイトでリポジトリのページを開く
 1. ```[Setting > General > Danger Zone]``` からリポジトリを public にする
 
-##  Github Pages の設定
+## Github Pages の設定
 ```[Setting > Pages > GitHub Pages > Build and deployment > Branch]``` で、
 ```Branch``` を ```main```、
 ```folder``` を ```docs``` に変更する
 
 ![alt text](./README_SRC/03_GithubPagesの設定.png)
 
+## 動作の確認
+```[Actions > All worksflows]``` でチェックマークがつくとデプロイが完遂したことを示す。
+
+![alt text](./README_SRC/04_デプロイの完遂.png)
+
+該当する操作をクリックすると次の画面になる。
+
+![alt text](./README_SRC/05_デプロイの様子.png)
+
+```deploy``` の下にある URL をクリックすると動作が確認できる。
+
+![alt text](./README_SRC/06_動作の確認.png)

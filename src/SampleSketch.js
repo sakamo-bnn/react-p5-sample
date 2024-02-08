@@ -9,6 +9,7 @@ export default function SampleSketch(props) {
   const draw = (p5) => {
     p5.background(0);
     p5.ellipse(150, 150, 70, 70);
+    p5.rect(150, 150, 70, 70);
   };
 
   return <Sketch setup={setup} draw={draw} />;
