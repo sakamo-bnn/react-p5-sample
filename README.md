@@ -302,7 +302,8 @@ warning: in the working copy of 'docs/static/js/main.98587e68.js.LICENSE.txt', L
 hint: Waiting for your editor to close the file...
 ```
 
-VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれる
+ここで ```docs`` フォルダが作成される。
+VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれる。
 
 ```COMMIT_EDITMSG: 
 # Please enter the commit message for your changes. Lines starting
@@ -317,9 +318,15 @@ VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれ
 
 ```<変更内容が以下に続く>``` 以降の行にある ```#``` を外して保存し、エディターを閉じる。
 
-# Github Pagesの設定
+# リポジトリの設定
 ## リポジトリの公開範囲
 1. Github のWebサイトでリポジトリのページを開く
 1. ```[Setting > General > Danger Zone]``` からリポジトリを public にする
 
-##  
+##  Github Pages の設定
+```[Setting > Pages > GitHub Pages > Build and deployment > Branch]``` で、
+```Branch``` を ```main```、
+```folder``` を ```docs``` に変更する
+
+![alt text](./README_SRC/03_GithubPagesの設定.png)
+
