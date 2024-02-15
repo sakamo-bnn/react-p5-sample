@@ -5,6 +5,9 @@ You can develop your project using React and p5.js by following these steps.
 1. Building a basic React project
 2. Introduction of p5.js
 
+日本語での解説は Qiita にて公開していますので、こちらをご確認ください。
+- [Reactでp5.jsを使う手順](https://qiita.com/skm_bnn/private/5ede253d469bad566c4b)
+
 # Building a basic React project
 Before introducing p5.js, check whether the basic environment of React app is in place.
 
