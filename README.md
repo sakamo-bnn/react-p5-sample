@@ -1,19 +1,48 @@
-# package.jsonの作成
-```
+# 基礎的な React プロジェクトの構築
+## ```package.json``` の作成
+まずは ```package.json``` を作成します。このファイルでプロジェクトの管理を行っていきます。
+
+```shell
 npm init -y
 ```
 
-# Reactアプリの基礎構築
+続いて，お好みのテキストエディタで ```package.json``` に次の内容を書き込みます。```プロジェクト名``` はご自身の内容に合わせてください。
+
+```json:package.json
+{
+  "name": "プロジェクト名",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
+  }
+}
+```
+
 ## Reactパッケージのインストール
+次のコマンドで React プロジェクトに必要なパッケージをインストールします。
+
 ```
 npm install react react-dom react-scripts
 ```
 
 ## ファイルとソースファイルの作成
-コマンドを示すが、GUI(エクスプローラー / Finder)を利用してもよい
+プロジェクトのディレクトリを構築していきます。Windows と Mac でのコマンドを示しておきますが、GUI (エクスプローラー / Finder) を使って手動でフォルダやファイルを作っても構いません。
 
 -  windows
-```
+```shell
 # 静的なアセットを管理するフォルダ
 mkdir public
 # HTML文書
@@ -26,8 +55,8 @@ New-Item ./src/index.js -type file
 New-Item ./src/App.js -type file
 ```
 
-- mac(動作未確認)
-```
+- mac (動作未確認)
+```shell
 # 静的なアセットを管理するフォルダを作成
 mkdir public
 # HTML文書を作成
@@ -41,7 +70,9 @@ touch src/App.js
 ```
 
 ## ソースファイルの編集
-- index.html
+先ほど作成したソースファイルを次のように変更してください。
+
+### ```index.html```
 ```html: index.html
 <!DOCTYPE html>
 <html lang="ja">
@@ -61,7 +92,7 @@ touch src/App.js
 </html>
 ```
 
-- index.js
+### ```index.js```
 ```jsx: index.js
 // ReactおよびReactDOMをインポート
 import React from 'react';
@@ -84,7 +115,7 @@ root.render(
 
 ```
 
-- App.js
+### ```App.js```
 ```jsx: App.js
 // Appコンポーネントの定義
 function App() {
@@ -100,38 +131,13 @@ export default App;
 ```
 
 ## 動作確認
-コマンドを容易に利用できるように ```package.json``` を次のように編集する。
-```script``` フィールドの値が変更されていることに注目されたい。
-```
-{
-  "name": "react-p5-sample",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
-  }
-}
-```
-
-次のコマンドで React アプリの動作を確認できる。
-```
+次のコマンドで React アプリの動作を確認できます。
+```shell
 npm start
 ```
 
-次の内容が出力される。
-```
+次の内容が出力されると成功です。
+```shell
 Compiled successfully!
 
 You can now view react-p5-sample in the browser.
@@ -145,11 +151,11 @@ To create a production build, use npm run build.
 webpack compiled successfully
 ```
 
-次のように「Hello, world!」と表示されればよい。
+しばらくすると、ブラウザが立ち上がります。起動したページで、次のように「Hello, world!」と表示されていると成功です。
 
 ![alt text](./README_SRC/00_React動作結果.png)
 
-動作の停止
+次の手順で動作を停止させることができます。
 1. ```Ctrl + C``` を押す
 1. ターミナルで次の出力が確認できるので，```y``` と入力する
   ```
@@ -168,18 +174,16 @@ webpack compiled successfully
   ```
 
 # p5.jsの導入
-自由にスケッチを書く前に、p5.jsの基本的な動作が実行できるのか確認をしていく。
+自由にスケッチを書く前に、p5.jsの基本的な動作が実行できるのか確認をしていきます。
 
 ## パッケージのインストール
-```
+次のコマンドで ```react-p5``` というパッケージを導入できます。
+```shell
 npm install react-p5
 ```
 
 ## p5.jsのソースファイル
-p5.js のプログラムを記したソースファイルを ```src``` フォルダに作成する。
-フォルダ名は任意のものでよい。
-ここでは ```SampleSketch.js``` とし、コンポーネント名を ```SampleSketch``` とする。
-コンポーネント名は任意で決められるが次の点に留意されたい。
+p5.js のプログラムを記したソースファイルを ```src``` フォルダに作成します。ソースファイル名はお好みのものをご設定ください。React のファイル名は、コンポーネント名と一致させていることが多いです。コンポーネント名もお好みで設定できますが、次の点を留意していください。
 - 1文字目は大文字のアルファベットから始まる
   - PascalCase (複数の単語が連なる場合は最初の文字を大文字にして繋げる様式)が一般的
 - ファイル名と一致させる
@@ -187,11 +191,7 @@ p5.js のプログラムを記したソースファイルを ```src``` フォル
 - 既存のコンポーネント名は利用できない
   - 例: ```Sketch``` は ```react-p5``` で定義済み
 
-```SampleSketch``` コンポーネントに p5.js の描画処理を記述する。
-基本的には ```setup()``` 関数や ```draw()``` 関数の中身を触ればよい。
-p5.js で実装されている変数や関数、クラスなどは <INS>```p5.```</INS> に続けて記述すれば利用できる。
-- キャンバスの横幅: ```p5.width```
-- ベクトルの生成: ```p5.createVector(1, 2)```
+ここではファイル名を ```SampleSketch.js``` とし、コンポーネント名を ```SampleSketch``` とします。この ```SampleSketch``` コンポーネントに p5.js の描画処理を記述していきます。
 
 ```jsx: SketchComponent.js
 import Sketch from "react-p5";
@@ -210,9 +210,13 @@ export default function SampleSketch(props) {
 };
 ```
 
-```App.js``` の内容を次のように変更する。
+基本的には ```setup()``` 関数や ```draw()``` 関数の中身を変更すれば、任意のスケッチが描画できます。注意として、p5.js で実装されている変数や関数、クラスなどは <INS>```p5.```</INS> に続けて記述する必要があります。次に簡単な例を示します。
+- キャンバスの横幅: ```p5.width```
+- ベクトルの生成: ```p5.createVector(1, 2)```
 
-```
+```SampleSketch``` コンポーネントを利用するために、```App.js``` の内容を次のように変更していきます。
+
+```jsx: App.js
 import SampleSketch from "./SampleSketch"
 
 // Appコンポーネントの定義
@@ -231,12 +235,18 @@ function App() {
 export default App;
 ```
 
-動作結果を示す。
-キャンバスが2つ出ることに対しては未解決状態
+## 動作確認
+先ほどと同様のコマンドで React アプリの動作を確認できます。
+```shell
+npm start
+```
+
+キャンバスが2つ出ることに対しては React の仕様となっています。後に簡単に説明を記します。
 
 ![alt text](./README_SRC/01_p5js動作結果.png)
 
-レンダリングの設定を<INS>一時的に</INS>変更するしかない。
+キャンバスが2つ出ることの解決策として、レンダリングの設定を <INS>一時的に</INS> 変更する方法があります。
+
 - 変更前
 ```jsx: index.js (ファイル末尾)
 root.render(
@@ -255,26 +265,21 @@ root.render(
 );
 ```
 
-変更後のコードでの動作結果を次に示す。
+変更後のコードにおける動作結果を次に示します。
 
 ![alt text](./README_SRC/02_p5js動作結果.png)
 
-ビルドする際には変更前のコードで問題ない(Github pages上での動作による確認)。
+Github pages 上でビルドする際には変更前のコードで問題ありません。
 
 # Github Pages へのデプロイ
-次のサイトを参考にした。
-
-https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
+Github Pages 上でアプリを公開する手順を示します。参考[1] の情報が非常に役に立ちました。
 
 ## ```package.json``` の編集
-```homepage```、```scripts``` フィールドの値を変更する。
-特に ```scripts``` フィールドにある ```git``` キー の値が記事の内容と違うので注意せよ。
-(記事では ```main``` が ```master``` となっている)
-
+```homepage```、```scripts``` フィールドの値を変更します。```homepage``` の ```アカウント名``` と ```リポジトリ名``` はご自身の内容に合わせて変更してください。
 
 ```
   <省略>
-  "homepage": "https://github.com/sakamo-bnn/react-p5-sample/",
+  "homepage": "https://アカウント名.github.io/リポジトリ名/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -289,14 +294,14 @@ https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
 ```
 
 ## デプロイ
-コマンドの実行: ```rm``` コマンドが実行できる環境を整えよ(Git Bashなど)
-```
+次のコマンドでリポジトリへ ```push``` できます。注意として、Windows では ```rm``` コマンドが実行できる環境を整える必要があります。環境の例として、```Git Bash``` の端末上で実行が可能です。
+```shell
 npm run deploy
 ```
 
-次のログが出力される。
+次のログが出力されます。
 ```
-> react-p5-sample@1.0.0 git
+> プロジェクト名@1.0.0 git
 > git add . && git commit && git push origin main
 
 warning: in the working copy of 'docs/asset-manifest.json', LF will be replaced by CRLF the next time Git touches it
@@ -305,10 +310,9 @@ warning: in the working copy of 'docs/static/js/main.98587e68.js.LICENSE.txt', L
 hint: Waiting for your editor to close the file...
 ```
 
-ここで ```docs`` フォルダが作成される。
-VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれる。
+ここで ```docs``` フォルダが作成されます。また、自動的に VSCode など何かしらのテキストエディターで ```COMMIT_EDITMSG``` が開かれます。
 
-```COMMIT_EDITMSG: 
+```:COMMIT_EDITMSG 
 # Please enter the commit message for your changes. Lines starting
 # with '#' will be ignored, and an empty message aborts the commit.
 #
@@ -319,45 +323,44 @@ VSCode など何かしらのエディターで ```COMMIT_EDITMSG``` が開かれ
 # <変更内容が以下に続く>
 ```
 
-```<変更内容が以下に続く>``` 以降の行にある ```#``` を外して保存し、エディターを閉じる。
-これで変更の内容が Github 上へ反映される(このコマンドの他に ```commit``` や ```push``` の操作は不要)。
+```<変更内容が以下に続く>``` 以降の行にある ```#``` を外して保存し、エディターを閉じてください。これで変更の内容が Github 上へ反映されます(このコマンドの実行以降に ```commit``` や ```push``` の操作は不要)。
 
 # リポジトリの設定
 ## リポジトリの公開範囲
+次の手順でレポジトリの公開範囲を設定します。
 1. Github のWebサイトでリポジトリのページを開く
-1. ```[Setting > General > Danger Zone]``` からリポジトリを public にする
+1. ```[Setting > General > Danger Zone]``` からリポジトリを ```public``` にする
 
 ## Github Pages の設定
-```[Setting > Pages > GitHub Pages > Build and deployment > Branch]``` で、
-```Branch``` を ```main```、
-```folder``` を ```docs``` にそれぞれ変更する。
+```[Setting > Pages > GitHub Pages > Build and deployment > Branch]``` で、```Branch``` を ```main```、```folder``` を ```docs``` にそれぞれ変更します。
 
 ![alt text](./README_SRC/03_GithubPagesの設定.png)
 
 ## 動作の確認
-```[Actions > All worksflows]``` でチェックマークがつくとデプロイが完遂したことを示す。
+```[Actions > All worksflows]``` でチェックマークがつくと、デプロイが完遂したことを示します。
 
 ![alt text](./README_SRC/04_デプロイの完遂.png)
 
-該当する操作をクリックすると次の画面になる。
+該当する操作をクリックすると次の画面になります。
 
 ![alt text](./README_SRC/05_デプロイの様子.png)
 
-```deploy``` の下にある URL をクリックすると動作が確認できる。
+```deploy``` の下にある URL をクリックすると動作が確認できます。
 
 ![alt text](./README_SRC/06_動作の確認.png)
 
-アプリケーションに変更を加えたときは、再度 ```npm run deploy``` コマンドを実行してデプロイの操作をすればよい。
+プロジェクトに変更を加えたときは、再度 ```npm run deploy``` コマンドを実行してデプロイの操作をすれば、変更内容が反映されます。
 
 ![alt text](./README_SRC/07_変更の反映.png)
 
-## ファイルのインポートについて
-```loadShader()``` 関数で shader オブジェクトを生成しようとするのに躓いたので記録を残す。
-結論から記すと、ファイルパスを単なる文字列や変数で管理するのではなく、```import``` 文を使うことで解決した。
-他の load系 の関数(```loadImage()```)も同様かは不明。
+## 補足: p5.js におけるファイルのインポートについて
+```loadShader()``` 関数で shader オブジェクトを生成しようとするのに躓いたので記録を残します。
+結論から記すと、ファイルパスを単なる文字列や変数で管理するのではなく、```import``` 文を使うことで解決できます。他の load系 の関数(```loadImage()```)も同様かは未確認です。
 
-- ダメだった例
-```shader の動作失敗例:JSX
+### 失敗例
+```preload``` 内の ```p5.loadShader()``` 関数でファイルのパスを渡していますが、上手くロードされません。
+
+```JSX: shader の動作失敗例
 import React from "react";
 import Sketch from "react-p5";
 
@@ -387,8 +390,9 @@ export default function SampleSketch(props) {
 };
 ```
 
-- 成功した例
-```shader の動作成功例:JSX
+### 成功例
+```import``` でファイルのパスを指定すると問題なく動作できました。
+```jsx: shader の動作成功例
 import React from "react";
 import Sketch from "react-p5";
 
@@ -421,3 +425,9 @@ export default function SampleSketch(props) {
   />;
 };
 ```
+
+
+# 参考
+- [1] ReactをGitHub Pagesにデプロイしよう
+
+https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
