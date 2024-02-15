@@ -1,16 +1,25 @@
-# 基礎的な React プロジェクトの構築
-## ```package.json``` の作成
-まずは ```package.json``` を作成します。このファイルでプロジェクトの管理を行っていきます。
+# How to develop Project with React and p5.js
+This repository shows the steps to use p5.js in a React app.
+
+You can develop your project using React and p5.js by following these steps. 
+1. Building a basic React project
+2. Introduction of p5.js
+
+# Building a basic React project
+Before introducing p5.js, check whether the basic environment of React app is in place.
+
+## Making ````package.json````
+First, create ````package.json````. This file will be used to manage the project.
 
 ```shell
 npm init -y
 ```
 
-続いて，お好みのテキストエディタで ```package.json``` に次の内容を書き込みます。```プロジェクト名``` はご自身の内容に合わせてください。
+Next, write the following content in ````package.json```` with your favorite text editor. Please change the ````PROJECT_NAME```` to suit your own content.
 
 ```json:package.json
 {
-  "name": "プロジェクト名",
+  "name": "PROJECT_NAME",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -31,46 +40,36 @@ npm init -y
 }
 ```
 
-## Reactパッケージのインストール
-次のコマンドで React プロジェクトに必要なパッケージをインストールします。
+## Installing core React packages
+Install the required packages for your React project with the following command:
 
-```
+```shell
 npm install react react-dom react-scripts
 ```
 
-## ファイルとソースファイルの作成
-プロジェクトのディレクトリを構築していきます。Windows と Mac でのコマンドを示しておきますが、GUI (エクスプローラー / Finder) を使って手動でフォルダやファイルを作っても構いません。
+## Creating files and source files
+Let's build the project directory. The commands for Windows and Mac are shown here, but you can also create folders and files manually using the GUI (Explorer or Finder).
 
 -  windows
 ```shell
-# 静的なアセットを管理するフォルダ
 mkdir public
-# HTML文書
 New-Item ./public/index.html -type file
-# Reactアプリケーションに関するファイルを管理するフォルダ
 mkdir src
-# エントリーポイント
 New-Item ./src/index.js -type file
-#  メインコンポーネント
 New-Item ./src/App.js -type file
 ```
 
-- mac (動作未確認)
+- mac (Operation not confirmed)
 ```shell
-# 静的なアセットを管理するフォルダを作成
 mkdir public
-# HTML文書を作成
 touch public/index.html
-# Reactアプリケーションに関するファイルを管理するフォルダを作成
 mkdir src
-# エントリーポイントを作成
 touch src/index.js
-# メインコンポーネントを作成
 touch src/App.js
 ```
 
-## ソースファイルの編集
-先ほど作成したソースファイルを次のように変更してください。
+## Edit source file
+Change the source file you created earlier as follows.
 
 ### ```index.html```
 ```html: index.html
@@ -78,14 +77,11 @@ touch src/App.js
 <html lang="ja">
 
   <head>
-    <!-- 文書の文字エンコーディングをUTF-8に指定 -->
     <meta charset="UTF-8">
-    <!-- ページのタイトルを指定 -->
-    <title>サンプルスケッチ</title>
+    <title>Sample Sketch</title>
   </head>
 
   <body>
-    <!-- Reactアプリケーションが描画されるルート要素の定義 -->
     <div id="root"></div>
   </body>
 
@@ -94,21 +90,15 @@ touch src/App.js
 
 ### ```index.js```
 ```jsx: index.js
-// ReactおよびReactDOMをインポート
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-// Appコンポーネントを'./App'からインポート
 import App from './App';
 
-// ルート要素を特定のDOM要素に関連付ける
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// ルート要素にReactコンポーネントを描画する
 root.render(
-  // React.StrictModeコンポーネントでアプリケーションをラップする
   <React.StrictMode>
-    {/* Appコンポーネントを描画 */}
     <App />
   </React.StrictMode>
 );
@@ -117,7 +107,6 @@ root.render(
 
 ### ```App.js```
 ```jsx: App.js
-// Appコンポーネントの定義
 function App() {
   return (
     <div className="App">
@@ -126,17 +115,18 @@ function App() {
   );
 }
 
-// Appコンポーネントを他のファイルで利用できるようにエクスポート
 export default App;
 ```
 
-## 動作確認
-次のコマンドで React アプリの動作を確認できます。
+## Operation confirmation
+You can see your React app working with the following command:
+
 ```shell
 npm start
 ```
 
-次の内容が出力されると成功です。
+It is successful if the following content is output.
+
 ```shell
 Compiled successfully!
 
@@ -151,13 +141,13 @@ To create a production build, use npm run build.
 webpack compiled successfully
 ```
 
-しばらくすると、ブラウザが立ち上がります。起動したページで、次のように「Hello, world!」と表示されていると成功です。
+After a while, the browser will start up. It is a success if the launched page displays "Hello, world!" as shown below.
 
 ![alt text](./README_SRC/00_React動作結果.png)
 
-次の手順で動作を停止させることができます。
-1. ```Ctrl + C``` を押す
-1. ターミナルで次の出力が確認できるので，```y``` と入力する
+You can stop the operation by following the steps below.
+1. Push ```Ctrl + C``` 
+1. You can see the following output in the terminal, so type ```y```
   ```
   Compiled successfully!
 
@@ -170,28 +160,31 @@ webpack compiled successfully
   To create a production build, use npm run build.
 
   webpack compiled successfully
-  ^C^Cバッチ ジョブを終了しますか (Y/N)? y
   ```
 
-# p5.jsの導入
-自由にスケッチを書く前に、p5.jsの基本的な動作が実行できるのか確認をしていきます。
+# Introduction of p5.js
+Before writing sketches freely, let's check whether the basic operations of p5.js can be executed.
 
-## パッケージのインストール
-次のコマンドで ```react-p5``` というパッケージを導入できます。
+## Installing the package
+You can install the package ````react-p5```` with the following command.
+
 ```shell
 npm install react-p5
 ```
 
-## p5.jsのソースファイル
-p5.js のプログラムを記したソースファイルを ```src``` フォルダに作成します。ソースファイル名はお好みのものをご設定ください。React のファイル名は、コンポーネント名と一致させていることが多いです。コンポーネント名もお好みで設定できますが、次の点を留意していください。
-- 1文字目は大文字のアルファベットから始まる
-  - PascalCase (複数の単語が連なる場合は最初の文字を大文字にして繋げる様式)が一般的
-- ファイル名と一致させる
-  - あくまで慣例みたなものなので、どうしようもない場合は満たさなくてよい
-- 既存のコンポーネント名は利用できない
-  - 例: ```Sketch``` は ```react-p5``` で定義済み
+## p5.js source file
+Create a source file containing the p5.js program in the ````src```` folder. Please set the source file name as you like. 
 
-ここではファイル名を ```SampleSketch.js``` とし、コンポーネント名を ```SampleSketch``` とします。この ```SampleSketch``` コンポーネントに p5.js の描画処理を記述していきます。
+React file names often match component names. You can set the component name as you like, but please keep the following points in mind.
+
+- The first letter starts with a capital letter
+   - PascalCase (when multiple words are connected, the first letter is capitalized) is common
+- Match file name
+   - This is just a convention, so if there is nothing you can do, you don't have to meet it.
+- Existing component names cannot be used
+   - Example: ```Sketch``` is defined in ```react-p5```
+
+Here, the file name is ```SampleSketch.js```, and the component name is ```SampleSketch```. We will write the p5.js drawing process in this ```SampleSketch``` component.
 
 ```jsx: SketchComponent.js
 import Sketch from "react-p5";
@@ -210,76 +203,72 @@ export default function SampleSketch(props) {
 };
 ```
 
-基本的には ```setup()``` 関数や ```draw()``` 関数の中身を変更すれば、任意のスケッチが描画できます。注意として、p5.js で実装されている変数や関数、クラスなどは <INS>```p5.```</INS> に続けて記述する必要があります。次に簡単な例を示します。
-- キャンバスの横幅: ```p5.width```
-- ベクトルの生成: ```p5.createVector(1, 2)```
+Basically, you can draw any sketch by changing the contents of the ```setup()``` function and ```draw()``` function. Please note that variables, functions, classes, etc. implemented in p5.js must be written following <INS>```p5.```</INS>. Here's a simple example:
+|Example|Code|
+|---|---|
+|Canvas width | ```p5.width```|
+|generation of Vector class| ```p5.createVector(1, 2)```|
 
-```SampleSketch``` コンポーネントを利用するために、```App.js``` の内容を次のように変更していきます。
+To use the ```SampleSketch``` component, change the contents of ```App.js``` as follows.
 
 ```jsx: App.js
 import SampleSketch from "./SampleSketch"
 
-// Appコンポーネントの定義
 function App() {
   return (
     <div className="App">
       <h1>Hello, world!</h1>
 
-      {/* p5.jsのスケッチ */}
       <SampleSketch />
     </div>
   );
 }
 
-// Appコンポーネントを他のファイルで利用できるようにエクスポート
 export default App;
 ```
 
-## 動作確認
-先ほどと同様のコマンドで React アプリの動作を確認できます。
+## Operation confirmation
+You can check the operation of your React app using the same command as above.
 ```shell
 npm start
 ```
 
-キャンバスが2つ出ることに対しては React の仕様となっています。後に簡単に説明を記します。
+It is a React specification that two canvases appear. I will give a brief explanation later.
 
 ![alt text](./README_SRC/01_p5js動作結果.png)
 
-キャンバスが2つ出ることの解決策として、レンダリングの設定を <INS>一時的に</INS> 変更する方法があります。
+As a solution to the problem of having two canvases, there is a way to temporarily change the rendering settings.
 
-- 変更前
-```jsx: index.js (ファイル末尾)
+- Change before
+```jsx: index.js (end of file)
 root.render(
-  // React.StrictModeコンポーネントでアプリケーションをラップする
   <React.StrictMode>
-    {/* Appコンポーネントを描画 */}
     <App />
   </React.StrictMode>
 );
 ```
-- 変更後
-```jsx: index.js (ファイル末尾)
+- After change
+```jsx: index.js (end of file)
 root.render(
-  // React.StrictModeコンポーネントでアプリケーションをラップする
   <App />
 );
 ```
 
-変更後のコードにおける動作結果を次に示します。
+The following is the behavior of the modified code.
 
 ![alt text](./README_SRC/02_p5js動作結果.png)
 
-Github pages 上でビルドする際には変更前のコードで問題ありません。
+When building on Github pages, there is no problem with the code before the change.
 
-# Github Pages へのデプロイ
-Github Pages 上でアプリを公開する手順を示します。参考[1] の情報が非常に役に立ちました。
+# Deploy to Github Pages
+Here are the steps to publish an app on Github Pages. The information in reference [1] was very helpful.
 
-## ```package.json``` の編集
-```homepage```、```scripts``` フィールドの値を変更します。```homepage``` の ```アカウント名``` と ```リポジトリ名``` はご自身の内容に合わせて変更してください。
+## Editing ```package.json```
+Change the values of the ```homepage```, ```scripts``` fields. Please change the ```ACCOUNT_NAME``` and ```REPOSITORY_NAME``` of ```homepage``` to match your own content.
 
-```
-  <省略>
-  "homepage": "https://アカウント名.github.io/リポジトリ名/",
+```json:package.json
+  <Omitted>
+  "homepage": "https://ACCOUNT_NAME.github.io/REPOSITORY_NAME/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -290,18 +279,20 @@ Github Pages 上でアプリを公開する手順を示します。参考[1] の
     "git": "git add . && git commit && git push origin main",
     "deploy": "npm run rm && npm run build && npm run mv && npm run git"
   },
-  <省略>
+  <Omitted>
 ```
 
-## デプロイ
-次のコマンドでリポジトリへ ```push``` できます。注意として、Windows では ```rm``` コマンドが実行できる環境を整える必要があります。環境の例として、```Git Bash``` の端末上で実行が可能です。
+## Deploy
+You can ```push``` to the repository with the following command: Please note that on Windows, you need to prepare an environment where the ```rm``` command can be executed. As an example environment, you can run it on a terminal in ````Git Bash````.
+
 ```shell
 npm run deploy
 ```
 
-次のログが出力されます。
+The following log is output.
+
 ```
-> プロジェクト名@1.0.0 git
+> PROJECT_NAME@1.0.0 git
 > git add . && git commit && git push origin main
 
 warning: in the working copy of 'docs/asset-manifest.json', LF will be replaced by CRLF the next time Git touches it
@@ -310,7 +301,7 @@ warning: in the working copy of 'docs/static/js/main.98587e68.js.LICENSE.txt', L
 hint: Waiting for your editor to close the file...
 ```
 
-ここで ```docs``` フォルダが作成されます。また、自動的に VSCode など何かしらのテキストエディターで ```COMMIT_EDITMSG``` が開かれます。
+A ```docs``` folder will now be created. It will also automatically open ```COMMIT_EDITMSG``` in some text editor such as VSCode.
 
 ```:COMMIT_EDITMSG 
 # Please enter the commit message for your changes. Lines starting
@@ -320,47 +311,47 @@ hint: Waiting for your editor to close the file...
 # Your branch is up to date with 'origin/main'.
 #
 # Changes to be committed:
-# <変更内容が以下に続く>
+# < Changes continue below... >
 ```
 
-```<変更内容が以下に続く>``` 以降の行にある ```#``` を外して保存し、エディターを閉じてください。これで変更の内容が Github 上へ反映されます(このコマンドの実行以降に ```commit``` や ```push``` の操作は不要)。
+Remove the ```#``` from the line after ```< Changes continue below... >```, save, and close the editor. The changes will now be reflected on Github (no ```commit``` or ```push``` operations are required after executing this command).
 
-# リポジトリの設定
-## リポジトリの公開範囲
-次の手順でレポジトリの公開範囲を設定します。
-1. Github のWebサイトでリポジトリのページを開く
-1. ```[Setting > General > Danger Zone]``` からリポジトリを ```public``` にする
+# Configuring the repository
+## Scope of repository disclosure
+Set the repository's public scope using the following steps.
+1. Open the repository page on the Github website
+2. Make the repository ```public``` from ```[Setting > General > Danger Zone]```
 
-## Github Pages の設定
-```[Setting > Pages > GitHub Pages > Build and deployment > Branch]``` で、```Branch``` を ```main```、```folder``` を ```docs``` にそれぞれ変更します。
+## Setting up Github Pages
+In ```[Setting > Pages > GitHub Pages > Build and deployment > Branch]```, set ```Branch``` to ```main``` and ```folder``` to ```docs``` respectively.
 
 ![alt text](./README_SRC/03_GithubPagesの設定.png)
 
-## 動作の確認
-```[Actions > All worksflows]``` でチェックマークがつくと、デプロイが完遂したことを示します。
+## Check operation
+A checkmark under ```[Actions > All worksflows]``` indicates that the deployment is complete.
 
 ![alt text](./README_SRC/04_デプロイの完遂.png)
 
-該当する操作をクリックすると次の画面になります。
+Click the appropriate operation to display the following screen.
 
 ![alt text](./README_SRC/05_デプロイの様子.png)
 
-```deploy``` の下にある URL をクリックすると動作が確認できます。
+You can check the operation by clicking the URL under ```deploy```.
 
 ![alt text](./README_SRC/06_動作の確認.png)
 
-プロジェクトに変更を加えたときは、再度 ```npm run deploy``` コマンドを実行してデプロイの操作をすれば、変更内容が反映されます。
+If you make changes to the project, run the ```npm run deploy``` command again to deploy them, and the changes will be reflected.
 
 ![alt text](./README_SRC/07_変更の反映.png)
 
-## 補足: p5.js におけるファイルのインポートについて
-```loadShader()``` 関数で shader オブジェクトを生成しようとするのに躓いたので記録を残します。
-結論から記すと、ファイルパスを単なる文字列や変数で管理するのではなく、```import``` 文を使うことで解決できます。他の load系 の関数(```loadImage()```)も同様かは未確認です。
+## Supplement: About importing files in p5.js
+I stumbled upon trying to create a shader object with the ```loadShader()``` function, so I'll leave a record.
+In conclusion, the problem can be solved by using the ```import``` statement instead of simply managing file paths with strings or variables. It is unconfirmed whether other load-related functions ( ```loadImage()```` ) are similar.
 
-### 失敗例
-```preload``` 内の ```p5.loadShader()``` 関数でファイルのパスを渡していますが、上手くロードされません。
+### Failure example
+I am passing the file path to the ```p5.loadShader()``` function in ```preload```, but it is not loading properly.
 
-```JSX: shader の動作失敗例
+```JSX: Failure example with shader
 import React from "react";
 import Sketch from "react-p5";
 
@@ -372,7 +363,6 @@ export default function SampleSketch(props) {
   }
 
   const setup = (p5, canvasParentRef) => {
-    // メインキャンバスの作成
     p5.resizeCanvas(400, 400, p5.WEBGL).parent(canvasParentRef);
   };
 
@@ -390,13 +380,12 @@ export default function SampleSketch(props) {
 };
 ```
 
-### 成功例
-```import``` でファイルのパスを指定すると問題なく動作できました。
-```jsx: shader の動作成功例
+### success story
+When I specified the file path with ```import```, it worked without any problems.
+```jsx: Example of successful shader operation
 import React from "react";
 import Sketch from "react-p5";
 
-// シェーダファイルへのパス
 import VERT_FILE from "./main.vert"
 import FRAG_FILE from "./main.frag"
 
@@ -408,7 +397,6 @@ export default function SampleSketch(props) {
   }
 
   const setup = (p5, canvasParentRef) => {
-    // メインキャンバスの作成
     p5.resizeCanvas(400, 400, p5.WEBGL).parent(canvasParentRef);
   };
 
@@ -427,7 +415,6 @@ export default function SampleSketch(props) {
 ```
 
 
-# 参考
-- [1] ReactをGitHub Pagesにデプロイしよう
-
-https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
+# Reference Web Site
+- [1] [ ReactをGitHub Pagesにデプロイしよう](https://qiita.com/tat_mae084/items/745761eee6cd1d42949d
+)
