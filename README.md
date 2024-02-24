@@ -318,7 +318,7 @@ A ```docs``` folder will now be created. It will also automatically open ```COMM
 # < Changes continue below... >
 ```
 
-Remove the ```#``` from the line after ```< Changes continue below... >```, save, and close the editor. The changes will now be reflected on Github (no ```commit``` or ```push``` operations are required after executing this command).
+Remove the ```#``` from the line after ```< Changes continue below... >```, save, and close the editor. Please perform ```push``` operations as necessary.
 
 # Configuring the repository
 ## Scope of repository disclosure
