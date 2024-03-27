@@ -1,16 +1,27 @@
-import React from "react";
-import Sketch from "react-p5";
+import React, { useEffect } from "react";
+import p5 from 'p5';
 
-export default function SampleSketch(props) {
-  const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(300, 300).parent(canvasParentRef);
+// 描画処理
+const circle = (p) => {
+  p.setup = () => {
+    // セットアップ処理
+    p.createCanvas(400, 400);
   };
 
-  const draw = (p5) => {
-    p5.background(0);
-    p5.ellipse(150, 150, 70, 70);
-    p5.rect(150, 150, 70, 70);
+  p.draw = () => {
+    p.background(0);
+    p.ellipse(200, 200, 80, 80); // サークルを描画
+    p.rect(200, 200, 80, 80); // サークルを描画
   };
-
-  return <Sketch setup={setup} draw={draw} />;
 };
+
+// 
+const Canvas = () => {
+  useEffect(() => {
+    new p5(circle); // p5.jsのキャンバスを生成
+  }, []);
+
+  return (<></>);
+};
+
+export default Canvas;

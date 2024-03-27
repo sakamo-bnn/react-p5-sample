@@ -16,8 +16,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-// root.render(
-//   // React.StrictModeコンポーネントでアプリケーションをラップする
-//   <App />
-// );
