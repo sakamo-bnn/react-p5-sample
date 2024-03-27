@@ -1,9 +1,9 @@
 {
-  "name": "react-p5-sample",
+  "name": "react-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://sakamo-bnn.github.io/react-p5-sample/",
+  "homepage": "https://sakamo-bnn.github.io/react-p5-sample-v2.00/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -18,15 +18,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "p5": "^1.9.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-p5": "^1.4.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1"
-  },
-  "resolutions": {
-    "nth-check": "^2.0.1"
   },
   "browserslist": {
     "production": [

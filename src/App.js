@@ -1,6 +1,4 @@
-// App.js
-import React from "react";
-import SampleSketch from "./SampleSketch";
+import SampleSketch from "./SampleSketch"
 
 // Appコンポーネントの定義
 function App() {
